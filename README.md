@@ -7,4 +7,4 @@ A customizable client generator for HeyAPI with prefix support, enabling easy cr
 Add the package directly from GitHub:
 
 ```bash
-pnpm add https://github.com/aknslc/heyapi-client-generator.git
+pnpm add heyapi-client-generator
