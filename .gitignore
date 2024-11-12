@@ -1,15 +1,27 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+# Node.js
+node_modules
+dist
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# testing
-/coverage
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# next.js
-/.next/
-/out/
+# OS ve IDE dosyaları
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.swp
 
-# production
-/build
+# Diğer geçici dosyalar
+*.tmp
+*.temp
