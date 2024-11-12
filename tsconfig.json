@@ -12,6 +12,7 @@
     ] // Buraya node ekleyin
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/scripts/**/*.ts"
   ]
 }
