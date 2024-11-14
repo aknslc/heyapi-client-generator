@@ -3,36 +3,29 @@ import fs from 'fs';
 import path from 'path';
 
 export interface ServiceConfig {
-    prefix?: string;
+    prefix: string;
     input: string;
-    output?: string;
+    output: string;
 }
 
-export interface GeneratorConfig {
-    services: ServiceConfig[];
-    defaultPrefix: string;
-    defaultOutput: string;
-}
-
-export async function generateClients({
-    services,
-    defaultOutput = 'src/client',
-    defaultPrefix = '/api',
-}: GeneratorConfig) {
+export async function generateClients(services: ServiceConfig[]) {
     for (const service of services) {
-        const output = service.output || defaultOutput;
-        const prefix = service.prefix || defaultPrefix;
-
         await createClient({
             client: '@hey-api/client-axios',
             input: service.input,
-            output,
-            plugins: ['@tanstack/react-query'],
+            output: service.output,
+            plugins: [
+                '@tanstack/react-query',
+            ]
         });
+        console.log(`Client generated for ${service.input} with prefix ${service.prefix}`);
 
-        const clientFilePath = path.resolve(output, 'services.gen.ts');
+        const clientFilePath = path.resolve(service.output, 'services.gen.ts');
         let fileContent = fs.readFileSync(clientFilePath, 'utf-8');
-        fileContent = fileContent.replace(/url: '\/api\/v\{version\}/g, `url: '${prefix}`);
+
+        fileContent = fileContent.replace(/url: '\/api\/v\{version\}/g, `url: '${service.prefix}`);
+
         fs.writeFileSync(clientFilePath, fileContent, 'utf-8');
+        console.log(`Prefix added to client file for ${service.input}`);
     }
 }

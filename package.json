@@ -1,12 +1,16 @@
 {
   "name": "heyapi-client-generator",
-  "version": "1.2.2",
+  "version": "1.2.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "scripts"
+  ],
   "scripts": {
     "build": "tsc",
     "generate": "ts-node src/index.ts",
-    "postinstall": "tsx src/scripts/setup.ts"
+    "postinstall": "node ./dist/scripts/setup.js"
   },
   "keywords": [
     "heyapi",
