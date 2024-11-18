@@ -9,7 +9,7 @@
     "outDir": "./dist",
     "types": [
       "node"
-    ] // Buraya node ekleyin
+    ]
   },
   "include": [
     "src/**/*.ts",

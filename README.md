@@ -14,8 +14,6 @@
 
 ## **Installation**
 
-Install the package using pnpm:
-
 ```bash
 pnpm add heyapi-client-generator
 ```
@@ -28,7 +26,7 @@ To use this package, follow these steps:
    In your project's root directory, create a generate-clients.ts file and add the following code:
 
 ```typescript
-import { generateClients, ServiceConfig } from "@hey-api/openapi-ts";
+import { generateClients, ServiceConfig } from "@heyapi-client-generator";
 
 const services: ServiceConfig[] = [
   {
@@ -46,17 +44,18 @@ generateClients(services)
 2. Add a Script to Your package.json
    Update your package.json file to include the following script:
 
+
+
+Make sure tsx is installed in your project:
+```bash
+pnpm add tsx typescript -D
+```
 ```json
 "scripts": {
-  "generate": "ts-node generate-clients.ts"
+  "generate": "tsx generate-clients.ts"
 }
 ```
 
-Make sure ts-node is installed in your project:
-
-```bash
-pnpm add ts-node typescript -D
-```
 
 3. Run the Script
    Generate the clients by running the following command in your terminal:
@@ -102,7 +101,7 @@ We welcome contributions! Follow these steps to contribute:
 - Clone it to your machine:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/aknslc/heyapi-client-generator.git
 ```
 Create a new branch for your changes.
 - Make your changes and test them.
