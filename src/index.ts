@@ -6,6 +6,7 @@ export interface ServiceConfig {
     prefix: string;
     input: string;
     output: string;
+    plugins?: string[];
 }
 
 export async function generateClients(services: ServiceConfig[]) {
@@ -14,9 +15,7 @@ export async function generateClients(services: ServiceConfig[]) {
             client: '@hey-api/client-axios',
             input: service.input,
             output: service.output,
-            plugins: [
-                '@tanstack/react-query',
-            ]
+            plugins: service.plugins as any,
         });
         console.log(`Client generated for ${service.input} with prefix ${service.prefix}`);
 

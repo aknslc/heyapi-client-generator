@@ -23,9 +23,7 @@ function generateClients(services) {
                 client: '@hey-api/client-axios',
                 input: service.input,
                 output: service.output,
-                plugins: [
-                    '@tanstack/react-query',
-                ]
+                plugins: service.plugins,
             });
             console.log(`Client generated for ${service.input} with prefix ${service.prefix}`);
             const clientFilePath = path_1.default.resolve(service.output, 'services.gen.ts');

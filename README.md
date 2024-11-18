@@ -26,19 +26,26 @@ To use this package, follow these steps:
    In your project's root directory, create a generate-clients.ts file and add the following code:
 
 ```typescript
-import { generateClients, ServiceConfig } from "@heyapi-client-generator";
+import { generateClients, ServiceConfig } from "heyapi-client-generator";
 
 const services: ServiceConfig[] = [
-  {
-    prefix: "/api/v1",
-    input: "./path-to-your-openapi-spec.json",
-    output: "./generated/client",
-  },
+    {
+        prefix: "/api/v1/pre-example",
+        input: "./openapi.json",
+        output: "src/client/pre-example",
+        plugins: ["example-plugin"],
+    },
+    {
+        prefix: "/api/v1/pre-example2",
+        input: "./openapi.json",
+        output: "src/client/pre-example2",
+        plugins: ["example-plugin"],
+    },
 ];
 
 generateClients(services)
-  .then(() => console.log("Clients successfully generated!"))
-  .catch((err) => console.error("Error generating clients:", err));
+    .then(() => console.log("Clients successfully generated!"))
+    .catch((err: any) => console.error("Error generating clients:", err));
 ```
 
 2. Add a Script to Your package.json
@@ -52,7 +59,7 @@ pnpm add tsx typescript -D
 ```
 ```json
 "scripts": {
-  "generate": "tsx generate-clients.ts"
+  "generate-client": "tsx generate-clients.ts"
 }
 ```
 
@@ -61,7 +68,7 @@ pnpm add tsx typescript -D
    Generate the clients by running the following command in your terminal:
 
 ```bash
-pnpm run generate
+pnpm run generate-client
 ```
 
 ## **How It Works**
@@ -82,6 +89,7 @@ interface ServiceConfig {
   prefix: string;
   input: string;
   output: string;
+  plugins?: string[];
 }
 ```
 
@@ -90,7 +98,7 @@ interface ServiceConfig {
 | `prefix` | `string` | The prefix to prepend to the API URLs                  |
 | `input`  | `string` | Path to the OpenAPI specification file                 |
 | `output` | `string` | Directory where the generated client files will reside |
-
+| `plugins` | `string[]` | Plugins to use for the client generation |
 **GitHub Repository**
 For more details, check out the GitHub repository: [heyapi-client-generator](https://github.com/aknslc/heyapi-client-generator)
 
