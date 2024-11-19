@@ -15,7 +15,7 @@
 ## **Installation**
 
 ```bash
-pnpm add heyapi-client-generator
+pnpm add -D heyapi-client-generator
 ```
 
 ## **Usage**
