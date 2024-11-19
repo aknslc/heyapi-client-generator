@@ -6,11 +6,16 @@
 
 ## **Features**
 
-- 🚀 Automatically generates TypeScript clients from OpenAPI specifications.
-- 🌟 Adds prefix configurations dynamically to API endpoints.
-- 🔧 Includes built-in React Query plugin integration for easy state management.
+- 🚀 Manage multiple services effortlessly.
+- 🌟 Save time with automated prefix handling.
+- 🔧 Enjoy a more streamlined API development experience.
 
 ---
+
+## **Dependencies**
+```bash
+pnpm add -D @hey-api/openapi-ts
+```
 
 ## **Installation**
 
@@ -30,12 +35,14 @@ import { generateClients, ServiceConfig } from "heyapi-client-generator";
 
 const services: ServiceConfig[] = [
     {
+        client: "@hey-api/client-axios/example",
         prefix: "/api/v1/pre-example",
         input: "./openapi.json",
         output: "src/client/pre-example",
         plugins: ["example-plugin"],
     },
     {
+        client: "@hey-api/client-axios/example2",
         prefix: "/api/v1/pre-example2",
         input: "./openapi.json",
         output: "src/client/pre-example2",
@@ -86,6 +93,7 @@ The generated clients include React Query hooks for managing API state seamlessl
 
 ```typescript
 interface ServiceConfig {
+  client: string;
   prefix: string;
   input: string;
   output: string;
@@ -99,6 +107,8 @@ interface ServiceConfig {
 | `input`  | `string` | Path to the OpenAPI specification file                 |
 | `output` | `string` | Directory where the generated client files will reside |
 | `plugins` | `string[]` | Plugins to use for the client generation |
+| `client` | `string` | The client to use for the generation |
+
 **GitHub Repository**
 For more details, check out the GitHub repository: [heyapi-client-generator](https://github.com/aknslc/heyapi-client-generator)
 

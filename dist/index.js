@@ -20,7 +20,7 @@ function generateClients(services) {
     return __awaiter(this, void 0, void 0, function* () {
         for (const service of services) {
             yield (0, openapi_ts_1.createClient)({
-                client: '@hey-api/client-axios',
+                client: service.client,
                 input: service.input,
                 output: service.output,
                 plugins: service.plugins,

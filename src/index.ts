@@ -1,18 +1,12 @@
 import { createClient } from '@hey-api/openapi-ts';
 import fs from 'fs';
 import path from 'path';
-
-export interface ServiceConfig {
-    prefix: string;
-    input: string;
-    output: string;
-    plugins?: string[];
-}
+import { ServiceConfig } from 'heyapi-client-generator';
 
 export async function generateClients(services: ServiceConfig[]) {
     for (const service of services) {
         await createClient({
-            client: '@hey-api/client-axios',
+            client: service.client as any,
             input: service.input,
             output: service.output,
             plugins: service.plugins as any,
