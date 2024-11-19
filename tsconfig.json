@@ -8,6 +8,8 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
     "baseUrl": "./src",
+    "declaration": true,
+    "emitDeclarationOnly": false,
     "types": [
       "node"
     ]
